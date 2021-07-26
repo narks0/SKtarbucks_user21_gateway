@@ -1,0 +1,77 @@
+server:
+  port: 8080
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: OrderManage
+          uri: http://localhost:8081
+          predicates:
+            - Path=/orders/**
+        - id: MenuManage
+          uri: http://localhost:8082
+          predicates:
+            - Path=/menus/** 
+        - id: ProductionManage
+          uri: http://localhost:8083
+          predicates:
+            - Path=/productions/** 
+        - id: MyPage
+          uri: http://localhost:8084
+          predicates:
+            - Path=/myPages/**
+        - id: PaymentManage
+          uri: http://localhost:8085
+          predicates:
+            - Path=/pays/**            
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: OrderManage
+          uri: http://OrderManage:8080
+          predicates:
+            - Path=/orders/**
+        - id: MenuManage
+          uri: http://MenuManage:8080
+          predicates:
+            - Path=/menus/** 
+        - id: ProductionManage
+          uri: http://ProductionManage:8080
+          predicates:
+            - Path=/productions/**
+        - id: MyPage
+          uri: http://MyPage:8080
+          predicates:
+            - Path=/myPages/**
+        - id: PaymentManage
+          uri: http://PaymentManage:8080
+          predicates:
+            - Path=/pays/**            
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
