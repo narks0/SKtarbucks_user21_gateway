@@ -57,14 +57,14 @@ spring:
           uri: http://ProductionManage:8080
           predicates:
             - Path=/productions/**
-        - id: MyPage
-          uri: http://MyPage:8080
-          predicates:
-            - Path=/myPages/**
         - id: PaymentManage
           uri: http://PaymentManage:8080
           predicates:
-            - Path=/pays/**            
+            - Path=/pays/**       
+        - id: MyPage
+          uri: http://MyPage:8080
+          predicates:
+            - Path=/myPages/**     
       globalcors:
         corsConfigurations:
           '[/**]':
