@@ -7,6 +7,10 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: PaymentManage
+          uri: http://localhost:8085
+          predicates:
+            - Path=/payments/**         
         - id: OrderManage
           uri: http://localhost:8081
           predicates:
@@ -22,11 +26,7 @@ spring:
         - id: MyPage
           uri: http://localhost:8084
           predicates:
-            - Path=/myPages/**
-        - id: PaymentManage
-          uri: http://localhost:8085
-          predicates:
-            - Path=/payments/**            
+            - Path=/myPages/**        
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -45,6 +45,10 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: PaymentManage
+          uri: http://PaymentManage:8080
+          predicates:
+            - Path=/payments/**       
         - id: OrderManage
           uri: http://OrderManage:8080
           predicates:
@@ -57,10 +61,6 @@ spring:
           uri: http://ProductionManage:8080
           predicates:
             - Path=/productions/**
-        - id: PaymentManage
-          uri: http://PaymentManage:8080
-          predicates:
-            - Path=/payments/**       
         - id: MyPage
           uri: http://MyPage:8080
           predicates:
