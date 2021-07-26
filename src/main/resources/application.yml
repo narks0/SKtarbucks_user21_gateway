@@ -26,7 +26,7 @@ spring:
         - id: PaymentManage
           uri: http://localhost:8085
           predicates:
-            - Path=/pays/**            
+            - Path=/payments/**            
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -60,7 +60,7 @@ spring:
         - id: PaymentManage
           uri: http://PaymentManage:8080
           predicates:
-            - Path=/pays/**       
+            - Path=/payments/**       
         - id: MyPage
           uri: http://MyPage:8080
           predicates:
